@@ -23,7 +23,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - web-static:/www/static
+      - web-static:/usr/src/app/static
     links:
       - web:web
 

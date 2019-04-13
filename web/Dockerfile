@@ -1,17 +1,17 @@
 FROM python:3.7-slim
 
-# Set environment varibles
+# Set environment variables
+
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+
 RUN python -m pip install --upgrade pip
 
-RUN pip install pipenv
-
-COPY Pipfile Pipfile
-COPY Pipfile.lock Pipfile.lock
-
 COPY requirements.txt requirements.txt
-RUN pipenv install --system
+RUN python -m pip install -r requirements.txt
 
-COPY . .
+COPY . /usr/src/app
